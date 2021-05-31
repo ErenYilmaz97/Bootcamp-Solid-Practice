@@ -56,5 +56,20 @@ namespace SolidPractice.Business.Concrete
 
             return _customerDal.Add(newCustomer);
         }
+
+
+
+        public int Remove(int customerId)
+        {
+            var findCustomer = _customerDal.Get(x => x.Id == customerId);
+
+            if (findCustomer == null)
+            {
+                //SİLİNMEK İSTENEN MÜŞTERİ MEVCUT DEĞİL
+                return 0;
+            }
+
+            return _customerDal.Remove(findCustomer);
+        }
     }
 }

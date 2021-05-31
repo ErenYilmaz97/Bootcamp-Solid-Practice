@@ -10,7 +10,6 @@ namespace SolidPractice.DataAccess.EntityFramework
     public class CustomerRepository : ICustomerDal
     {
 
-
         public IList<Customer> GetAll()
         {
             using (var _context = new SolidPracticeDbContext())

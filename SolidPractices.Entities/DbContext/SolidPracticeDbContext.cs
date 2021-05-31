@@ -19,6 +19,7 @@ namespace SolidPractices.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //BİRE BİR İLİŞKİLER
             modelBuilder.Entity<Address>().HasOne(x=>x.Customer).WithOne(x=>x.Address).HasForeignKey<Customer>(x=>x.AddressId);
             modelBuilder.Entity<Address>().HasOne(x => x.Employee).WithOne(x => x.Address).HasForeignKey<Employee>(x => x.AddressId);
             modelBuilder.Entity<Address>().HasOne(x => x.Supplier).WithOne(x => x.Address).HasForeignKey<Supplier>(x => x.AddressId);

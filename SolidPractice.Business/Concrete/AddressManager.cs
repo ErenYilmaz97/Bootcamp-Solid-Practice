@@ -7,7 +7,7 @@ using SolidPractices.Entities.Entities;
 
 namespace SolidPractice.Business.Concrete
 {
-    public class AddressManager : PersonManager, IAddressService
+    public class AddressManager :  IAddressService
     {
 
         private readonly IAddressDal _addressDal;
