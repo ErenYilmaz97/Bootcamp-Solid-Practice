@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using SolidPractice.Business.Abstract;
+using SolidPractice.Business.Extensions;
 using SolidPractice.DataAccess.Abstract;
 using SolidPractice.Entities.DTOs;
 using SolidPractices.Entities.Entities;
@@ -39,6 +41,7 @@ namespace SolidPractice.Business.Concrete
 
         public int Add(AddCustomerDto addCustomerDto)
         {
+
             var findAddress = _addressDal.Get(x => x.Id == addCustomerDto.AddressId);
 
             if (findAddress == null)
@@ -70,6 +73,29 @@ namespace SolidPractice.Business.Concrete
             }
 
             return _customerDal.Remove(findCustomer);
+        }
+
+
+
+        public void ExtensionTest()
+        {
+            Exception handledException = null;
+
+            Func<object> function = () =>
+            {
+                Debug.Write("Extension Deniyoruz.");
+                throw new ArgumentNullException();
+            };
+
+
+            //DELEGEYİ TRY-CATCH İÇERİSİNDE ÇALIŞTIR.
+            //APPLICATION
+            var result = function.ExecuteInTryCatch<ApplicationException>(ref handledException);
+
+            if (result && handledException != null)
+            {
+                Debug.Write("Başka Bir Hata Oluştu.");
+            }
         }
     }
 }
