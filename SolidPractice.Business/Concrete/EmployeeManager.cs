@@ -29,10 +29,16 @@ namespace SolidPractice.Business.Concrete
             return _employeeDal.GetAll();
         }
 
+
+
+
         public Employee Get(Func<Employee, bool> predicate)
         {
             return _employeeDal.Get(predicate);
         }
+
+
+
 
         public int Add(AddEmployeeDto addEmployeeDto)
         {
@@ -55,6 +61,49 @@ namespace SolidPractice.Business.Concrete
             };
 
             return _employeeDal.Add(newEmployee);
+        }
+
+
+
+
+        public int Remove(int employeeId)
+        {
+            var findEmployee = _employeeDal.Get(x => x.Id == employeeId);
+
+            if (findEmployee == null)
+            {
+                //SİLİNMEK İSTENEN MÜŞTERİ MEVCUT DEĞİL
+                return 0;
+            }
+
+            return _employeeDal.Remove(findEmployee);
+        }
+
+
+
+
+
+        public int Update(UpdateEmployeeDto updateEmployeeDto)
+        {
+            var employee = _employeeDal.Get(x => x.Id == updateEmployeeDto.Id);
+
+            if (employee == null)
+                return 0;
+
+            var findAddress = _addressDal.Get(x => x.Id == updateEmployeeDto.AddressId);
+
+            if (findAddress == null)
+                return 0;
+
+            employee.Name = updateEmployeeDto.Name;
+            employee.LastName = updateEmployeeDto.LastName;
+            employee.AddressId = updateEmployeeDto.AddressId;
+            employee.DepartmentCode = updateEmployeeDto.DepartmentCode;
+            employee.DepartmentName = updateEmployeeDto.DepartmentName;
+            employee.ReportsTo = updateEmployeeDto.ReportsTo;
+            var affectedRows = _employeeDal.Update(employee);
+
+            return affectedRows;
         }
     }
 }

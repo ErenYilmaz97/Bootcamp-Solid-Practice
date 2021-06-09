@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mTEhQ4naUaexPqr1BlXWGX+RI4z1bj5+VWKfrxVMJ0cR+YY9xGhx6k7xzSQjjHMcuku5bqGHt2NfXDJ1p7oE7A==",
+  "dgSpecHash": "XGvssZiTU51BZWLf0nkO5Fx7CSEjHacUHnq0vSh+STZ0PllrkoFJMlb1l8GhAvsKcc8Vf9zNK3cvvv0ZfUuB1g==",
   "success": true,
   "projectFilePath": "C:\\Users\\eren_\\Desktop\\örnekc#\\AkbankBootcampPractices\\SolidPractice.WebAPI\\SolidPractice.WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\eren_\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

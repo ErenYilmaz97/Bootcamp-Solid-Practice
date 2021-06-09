@@ -65,3 +65,4 @@ C:\Users\eren_\Desktop\örnekc#\AkbankBootcampPractices\SolidPractice.WebAPI\bin
 C:\Users\eren_\Desktop\örnekc#\AkbankBootcampPractices\SolidPractice.WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\eren_\Desktop\örnekc#\AkbankBootcampPractices\SolidPractice.WebAPI\bin\Debug\net5.0\SolidPractice.DataAccess.dll
 C:\Users\eren_\Desktop\örnekc#\AkbankBootcampPractices\SolidPractice.WebAPI\bin\Debug\net5.0\SolidPractice.DataAccess.pdb
+C:\Users\eren_\Desktop\örnekc#\AkbankBootcampPractices\SolidPractice.WebAPI\bin\Debug\net5.0\Dapper.dll

@@ -23,6 +23,28 @@ namespace SolidPractice.WebAPI.Controllers
 
 
 
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_addressService.GetAll());
+        }
+
+
+
+        [HttpGet]
+        [Route("{addressId:int}")]
+        public IActionResult GetById(int addressId)
+        {
+            var address = _addressService.Get(x => x.Id == addressId);
+
+            if (address == null)
+                return NotFound("Adres Bulunamadı.");
+
+            return Ok(address);
+        }
+        
+
         [HttpPost]
         public IActionResult AddAddress(AddAddressDto addressDto)
         {
@@ -36,6 +58,35 @@ namespace SolidPractice.WebAPI.Controllers
             return Ok($"{affectedRows} Adet Adres Eklendi.");
         }
 
+
+
+
+        [HttpDelete]
+        [Route("{addressId:int}")]
+        public IActionResult RemoveAddress(int addressId)
+        {
+            var affectedRows = _addressService.Remove(addressId);
+
+            if (affectedRows == 0)
+                return BadRequest("Adres Silinemedi.");
+
+            return Ok($"{affectedRows} Adet Adres Silindi.");
+        }
+
+
+
+
+
+        [HttpPut]
+        public IActionResult UpdateAddress(UpdateAddressDto updateAddressDto)
+        {
+            var affectedRows = _addressService.Update(updateAddressDto);
+
+            if (affectedRows == 0)
+                return BadRequest("Adres Güncellenemedi.");
+
+            return Ok($"{affectedRows} Adet Adres Güncellendi.");
+        }
 
     }
 }

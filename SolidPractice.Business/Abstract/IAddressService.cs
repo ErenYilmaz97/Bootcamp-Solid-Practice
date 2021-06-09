@@ -13,5 +13,7 @@ namespace SolidPractice.Business.Abstract
         IList<Address> GetAll();
         Address Get(Func<Address, bool> predicate);
         int Add(AddAddressDto addressDto);
+        int Remove(int addressId);
+        int Update(UpdateAddressDto updateAddressDto);
     }
 }

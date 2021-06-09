@@ -24,6 +24,31 @@ namespace SolidPractice.WebAPI.Controllers
         }
 
 
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_employeeService.GetAll());
+        }
+
+
+
+        [HttpGet]
+        [Route("{employeeId:int}")]
+        public IActionResult GetById(int employeeId)
+        {
+            var employee = _employeeService.Get(x => x.Id == employeeId);
+
+            if (employee == null)
+                return NotFound("Personel Bulunamadı.");
+
+            return Ok(employee);
+        }
+
+
+
+
+
         [HttpPost]
         public IActionResult AddEmployee(AddEmployeeDto addEmployeeDto)
         {
@@ -33,6 +58,35 @@ namespace SolidPractice.WebAPI.Controllers
                 return BadRequest("Personel Eklenemedi.");
 
             return Ok($"{affectedRows} Adet Personel Eklendi.");
+        }
+
+
+
+
+        [HttpPut]
+        public IActionResult UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        {
+            var affectedRows = _employeeService.Update(updateEmployeeDto);
+
+            if (affectedRows == 0)
+                return BadRequest("Personel Güncellenemedi.");
+
+            return Ok($"{affectedRows} Adet Personel Güncellendi.");
+        }
+
+
+
+
+        [HttpDelete]
+        [Route("{employeeId:int}")]
+        public IActionResult DeleteEmploye(int employeeId)
+        {
+            var affectedRows = _employeeService.Remove(employeeId);
+
+            if (affectedRows == 0)
+                return BadRequest("Personel Silinemedi.");
+
+            return Ok($"{affectedRows} Adet Personel Silindi.");
         }
     }
 }

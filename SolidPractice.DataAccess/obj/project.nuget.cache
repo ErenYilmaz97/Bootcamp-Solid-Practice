@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "66XWB/pTyiHLOYI8Q4vOf1XW14hO8eu/w9u279TLe/fl6VtdrgAqbcNSjhd9r7H/PqJqOTyBtAzGUlDJdC3OXw==",
+  "dgSpecHash": "s7WvsR++znMfe/1iNeIuMfxgq4m0XnYCcYfDU44zRDAPnMkhKIdkzkZGjYsCoSrTe0MxIQzpsQVJyGeDTbCs6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\eren_\\Desktop\\örnekc#\\AkbankBootcampPractices\\SolidPractice.DataAccess\\SolidPractice.DataAccess.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\eren_\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\eren_\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

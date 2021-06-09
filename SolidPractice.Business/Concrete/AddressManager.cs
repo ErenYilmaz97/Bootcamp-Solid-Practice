@@ -32,10 +32,42 @@ namespace SolidPractice.Business.Concrete
             return _addressDal.Get(predicate);
         }
 
+
+
         public int Add(AddAddressDto addressDto)
         {
             var newAddress = new Address(){Country = addressDto.Country, City = addressDto.City, PostCode = addressDto.PostCode};
             return _addressDal.Add(newAddress);
+        }
+
+
+
+        public int Remove(int addressId)
+        {
+            var address = _addressDal.Get(x => x.Id == addressId);
+
+            if (address == null)
+                return 0;
+
+            var affectedRows = _addressDal.Remove(address);
+            return affectedRows;
+        }
+
+
+
+        public int Update(UpdateAddressDto updateAddressDto)
+        {
+            var address = _addressDal.Get(x => x.Id == updateAddressDto.Id);
+
+            if (address == null)
+                return 0;
+
+            address.Country = updateAddressDto.Country;
+            address.City = updateAddressDto.City;
+            address.PostCode = updateAddressDto.PostCode;
+
+            var affectedRows = _addressDal.Update(address);
+            return affectedRows;
         }
     }
 }

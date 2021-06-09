@@ -8,6 +8,7 @@ using SolidPractice.Business.Abstract;
 using SolidPractice.Business.Concrete;
 using SolidPractice.DataAccess.EntityFramework;
 using SolidPractice.Entities.DTOs;
+using SolidPractices.Entities.Entities;
 
 namespace SolidPractice.WebAPI.Controllers
 {
@@ -22,6 +23,22 @@ namespace SolidPractice.WebAPI.Controllers
         public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
+        }
+
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_customerService.GetAll());
+        }
+
+
+
+        [HttpGet]
+        [Route("{customerId:int}")]
+        public IActionResult GetById(int customerId)
+        {
+            return Ok(_customerService.Get(x=>x.Id == customerId));
         }
 
 
@@ -52,6 +69,20 @@ namespace SolidPractice.WebAPI.Controllers
 
 
         }
+
+
+
+        [HttpPut]
+        public IActionResult UpdateCustomer(UpdateCustomerDto updateCustomerDto)
+        {
+            var affectedRows = _customerService.Update(updateCustomerDto);
+
+            if (affectedRows == 0)
+                return BadRequest("Müşteri Güncellenemedi.");
+
+            return Ok($"{affectedRows} Adet Müşteri Güncellendi.");
+        }
+
 
     }
 }

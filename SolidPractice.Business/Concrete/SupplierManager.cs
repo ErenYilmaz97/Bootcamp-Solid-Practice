@@ -27,10 +27,18 @@ namespace SolidPractice.Business.Concrete
             return _supplierDal.GetAll();
         }
 
+
+
+
+
         public Supplier Get(Func<Supplier, bool> predicate)
         {
             return _supplierDal.Get(predicate);
         }
+
+
+
+
 
         public int Add(AddSupplierDto addSupplierDto)
         {
@@ -53,6 +61,48 @@ namespace SolidPractice.Business.Concrete
 
 
             return _supplierDal.Add(newSupplier);
+        }
+
+
+
+
+        public int Remove(int employeeId)
+        {
+            var findEmployee = _supplierDal.Get(x => x.Id == employeeId);
+
+            if (findEmployee == null)
+            {
+                //SİLİNMEK İSTENEN MÜŞTERİ MEVCUT DEĞİL
+                return 0;
+            }
+
+            return _supplierDal.Remove(findEmployee);
+        }
+
+
+
+
+
+        public int Update(UpdateSupplierDto updateSupplierDto)
+        {
+            var employee = _supplierDal.Get(x => x.Id == updateSupplierDto.Id);
+
+            if (employee == null)
+                return 0;
+
+            var findAddress = _addressDal.Get(x => x.Id == updateSupplierDto.AddressId);
+
+            if (findAddress == null)
+                return 0;
+
+            employee.Name = updateSupplierDto.Name;
+            employee.LastName = updateSupplierDto.LastName;
+            employee.AddressId = updateSupplierDto.AddressId;
+            employee.CompanyName = updateSupplierDto.CompanyName;
+            employee.Fax = updateSupplierDto.Fax;
+            var affectedRows = _supplierDal.Update(employee);
+
+            return affectedRows;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace SolidPractice.Business.Abstract
         IList<Customer> GetAll();
         Customer Get(Func<Customer, bool> predicate);
         int Add(AddCustomerDto addCustomerDto);
-
         int Remove(int customerId);
+        int Update(UpdateCustomerDto updateCustomerDto);
     }
 }

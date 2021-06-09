@@ -6,7 +6,7 @@
         public string DepartmentName { get; set; }
         public string ReportsTo { get; set; }
 
-
+        
         public Employee():base()
         {
             

@@ -24,6 +24,31 @@ namespace SolidPractice.WebAPI.Controllers
 
 
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_supplierService.GetAll());
+        }
+
+
+
+        [HttpGet]
+        [Route("{supplierId:int}")]
+        public IActionResult GetById(int supplierId)
+        {
+            var supplier = _supplierService.Get(x => x.Id == supplierId);
+
+            if (supplier == null)
+                return NoContent();
+
+            return Ok(supplier);
+
+        }
+
+
+
+
+
         [HttpPost]
         public IActionResult AddSupplier(AddSupplierDto addSupplierDto)
         {
@@ -33,6 +58,36 @@ namespace SolidPractice.WebAPI.Controllers
                 return BadRequest("Tedarikçi Eklenemedi.");
 
             return Ok($"{affectedRows} Adet Tedarikçi Eklendi.");
+        }
+
+
+
+
+        [HttpPut]
+        public IActionResult UpdateSupplier(UpdateSupplierDto updateSupplierDto)
+        {
+            var affectedRows = _supplierService.Update(updateSupplierDto);
+
+            if (affectedRows == 0)
+                return BadRequest("Tedarikçi Güncellenemedi.");
+
+            return Ok($"{affectedRows} Adet Tedarikçi Güncellendi.");
+        }
+
+
+
+
+        [HttpDelete]
+        [Route("{supplierId:int}")]
+        public IActionResult RemoveSupplier(int supplierId)
+        {
+            var affectedRows = _supplierService.Remove(supplierId);
+
+            if (affectedRows == 0)
+                return BadRequest("Tedarikçi Silinemedi.");
+
+            return Ok($"{affectedRows} Adet Tedarikçi Silindi.");
+
         }
     }
 }

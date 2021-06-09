@@ -19,6 +19,8 @@ namespace SolidPractice.DataAccess.EntityFramework
             }
         }
 
+
+
         public Address Get(Func<Address, bool> predicate)
         {
             using (var _context = new SolidPracticeDbContext())
@@ -26,6 +28,8 @@ namespace SolidPractice.DataAccess.EntityFramework
                 return _context.Addresses.FirstOrDefault(predicate);
             }
         }
+
+
 
         public int Add(Address address)
         {
@@ -36,6 +40,8 @@ namespace SolidPractice.DataAccess.EntityFramework
             }
         }
 
+
+
         public int Remove(Address address)
         {
             using (var _context = new SolidPracticeDbContext())
@@ -45,6 +51,8 @@ namespace SolidPractice.DataAccess.EntityFramework
             }
         }
 
+
+
         public int Update(Address address)
         {
             using (var _context = new SolidPracticeDbContext())
@@ -53,5 +61,7 @@ namespace SolidPractice.DataAccess.EntityFramework
                 return _context.SaveChanges();
             }
         }
+
+
     }
 }

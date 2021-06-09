@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using SolidPractice.Business.Abstract;
 using SolidPractice.Business.Concrete;
 using SolidPractice.DataAccess.Abstract;
+using SolidPractice.DataAccess.Dapper;
 using SolidPractice.DataAccess.EntityFramework;
 using SolidPractices.Entities;
 
@@ -40,10 +41,10 @@ namespace SolidPractice.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SolidPractice.WebAPI", Version = "v1" });
             });
 
-            services.AddScoped<IAddressDal, AddressRepository>();
-            services.AddScoped<ICustomerDal, CustomerRepository>();
-            services.AddScoped<IEmployeeDal, EmployeeRepository>();
-            services.AddScoped<ISupplierDal, SupplierRepository>();
+            services.AddScoped<IAddressDal, DapperAddressRepository>();
+            services.AddScoped<ICustomerDal, DapperCustomerRepository>();
+            services.AddScoped<IEmployeeDal, DapperEmployeeRepository>();
+            services.AddScoped<ISupplierDal, DapperSupplierRepository>();
 
             services.AddScoped<IAddressService, AddressManager>();
             services.AddScoped<ICustomerService, CustomerManager>();

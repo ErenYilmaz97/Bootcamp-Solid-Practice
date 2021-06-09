@@ -77,25 +77,25 @@ namespace SolidPractice.Business.Concrete
 
 
 
-        public void ExtensionTest()
+        public int Update(UpdateCustomerDto updateCustomerDto)
         {
-            Exception handledException = null;
+            var customer = _customerDal.Get(x => x.Id == updateCustomerDto.Id);
 
-            Func<object> function = () =>
-            {
-                Debug.Write("Extension Deniyoruz.");
-                throw new ArgumentNullException();
-            };
+            if (customer == null)
+                return 0;
 
+            var findAddress = _addressDal.Get(x => x.Id == updateCustomerDto.AddressId);
 
-            //DELEGEYİ TRY-CATCH İÇERİSİNDE ÇALIŞTIR.
-            //APPLICATION
-            var result = function.ExecuteInTryCatch<ApplicationException>(ref handledException);
+            if (findAddress == null)
+                return 0;
 
-            if (result && handledException != null)
-            {
-                Debug.Write("Başka Bir Hata Oluştu.");
-            }
+            customer.Name = updateCustomerDto.Name;
+            customer.LastName = updateCustomerDto.LastName;
+            customer.AddressId = updateCustomerDto.AddressId;
+            customer.CustomerType = updateCustomerDto.CustomerType;
+            var affectedRows = _customerDal.Update(customer);
+
+            return affectedRows;
         }
     }
 }

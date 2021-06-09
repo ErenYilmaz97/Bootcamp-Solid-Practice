@@ -13,5 +13,7 @@ namespace SolidPractice.Business.Abstract
         IList<Supplier> GetAll();
         Supplier Get(Func<Supplier, bool> predicate);
         int Add(AddSupplierDto addSupplierDto);
+        int Remove(int employeeId);
+        int Update(UpdateSupplierDto updateSupplierDto);
     }
 }
